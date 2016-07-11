@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<meta name="description" content="Sudoku test">
+<meta name="keywords" content="sudoku">
+<meta author content="Paola Zarate"> 
+<title>Sudoku</title>
+<link rel="stylesheet" type="text/css" href="css/main.css">
+</head>
+
+<body ng-app="Sudoku">
+	<div ng-controller="SudokuController as SudokuCtrl">
+		
+		<header>
+			<h1>Sudoku</h1>
+		</header>
+		<div class="board">
+			{{messageError}}
+			<div ng-repeat="row in sudokuBoard track by $index" ng-init="moveRow=$index">
+				<div ng-repeat="col in row track by $index" class="cell" ng-init="moveValue=col">
+					<div>
+						{{moveValue}}
+				    	<input type="number" id="cell[{{moveRow}}][{{$index}}]" name="cell[{{moveRow}}][{{$index}}]" 
+				    	ng-model="col" value="{{col}}" class="input-cell"  
+				    	ng-change="isValidateNumber(moveRow, $index, col)" ng-disabled="{{col>0}}">
+				    </div>
+				</div>
+			</div>
+		</div>
+		<br/>
+		<br/>
+		
+      	<button ng-click="SudokuCtrl.editBoard(board)">PUT Board</button>
+    </div>
+</body>
+<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.6/angular.min.js"></script>
+<script type="text/javascript" src="js/app.js"></script>
+<script type="text/javascript" src="js/SudokuController.js"></script>
+<script type="text/javascript" src="js/SudokuService.js"></script>
+</html>

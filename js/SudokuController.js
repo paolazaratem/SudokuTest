@@ -55,7 +55,7 @@
       return SudokuService.putBoard(params)
         .then(function(data) {
           if(data.data.gameOver === true){
-            $scope.message = "!!! You win !!!"
+            $scope.message = "!!You win!! You can begin a new game"
           }
           $scope.sudokuBoard = data.data.board;
         })

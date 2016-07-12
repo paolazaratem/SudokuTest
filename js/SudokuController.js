@@ -44,8 +44,6 @@
         "moveColumn": $scope.moveColumn,
         "moveValue": $scope.moveValue
       }; 
-      console.log("params");
-      console.log(params);
       return SudokuService.putBoard(params)
         .then(function(data) {
           if(data.data.gameOver === true){
@@ -66,7 +64,6 @@
     }
 
     function isValidateNumber(row, col, value){
-      console.log(row + " : " + col + " : " + value);
       if( value > 9 || value < 0 ){
         if(value.toString().length >= 2){
           $scope.moveValue = value;

@@ -19,8 +19,8 @@
 			<div class="board" board-size="9">
 				<p class="alert-info" ng-if="message">{{message}}</p>
 				<div ng-repeat="row in sudokuBoard track by $index" ng-init="moveRow=$index" 
-				class="{{isHorizontalLine($index)}}">
-					<div ng-repeat="col in row track by $index" class="cell">
+				class="row {{isHorizontalLine($index)}}">
+					<div ng-repeat="col in row track by $index" class="cell b_{{$index % 3 == 0}}">
 					    <input type="text" id="cell[{{moveRow}}][{{$index}}]" name="cell[{{moveRow}}][{{$index}}]" ng-model="col" value="{{col}}" 
 					    	class="input-cell" ng-change="isValidateNumber(moveRow, $index, col)" 
 					    	ng-disabled="{{col>0}}" maxlength="1" only-digits>

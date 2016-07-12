@@ -55,7 +55,7 @@
       return SudokuService.putBoard(params)
         .then(function(data) {
           if(data.data.gameOver === true){
-            $scope.message = "!!You win!! You can begin a new game"
+            $scope.message = "Congratulations you successfully completed sudoku. You can begin a new game"
           }
           $scope.sudokuBoard = data.data.board;
         })
@@ -83,9 +83,11 @@
     }
 
     function isHorizontalLine(row){
-     if( (row+1)%3 == 0 )
+      if(row == 0)
+        return "top-line";
+      else if( (row+1)%3 == 0 )
        return "black-line";
-     else
+      else
        return "";
    }
   }

@@ -1,3 +1,8 @@
+/* SudokuController - the controller for the "Sudoku view" with methods createBoardDefault and editBoard
+ * relies on Angular injector to provide:
+ *     $scope - Is available for the access the var of the view and the controller 
+ *     SudokuService - the application data access service (methods getBoard y putBoard).
+ */
 (function () {
   'use strict';
 

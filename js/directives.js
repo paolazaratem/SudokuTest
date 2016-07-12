@@ -1,25 +1,32 @@
-angular
-    .module('Sudoku')
-    .directive('onlyDigits', onlyDigits);
+(function () {
+	'use strict';
 
- 	function onlyDigits(){
-	    return {
-	      require: 'ngModel',
-	      restrict: 'A',
-	      link: function (scope, element, attr, ctrl) {
-	        function inputValue(val) {
-	          if (val) {
-	            var digits = val.replace(/[^0-9]/g, '');
+	angular
+	    .module('Sudoku')
+	    .directive('onlyDigits', onlyDigits);
 
-	            if (digits !== val) {
-	              ctrl.$setViewValue(digits);
-	              ctrl.$render();
-	            }
-	            return parseInt(digits,10);
-	          }
-	          return undefined;
-	        }            
-	        ctrl.$parsers.push(inputValue);
-	      }
-	    };
-	}
+	    /*
+	    Description: this directive valite the user only put numbers
+	    Use: <input only-digits>
+	    */
+	 	function onlyDigits(){
+		    return {
+		      require: 'ngModel',
+		      restrict: 'A',
+		      link: function (scope, element, attr, ctrl) {
+		        function inputValue(val) {
+		          if (val) {
+		            var digits = val.replace(/[^0-9]/g, '');
+		            if (digits !== val) {
+		              ctrl.$setViewValue(digits);
+		              ctrl.$render();
+		            }
+		            return parseInt(digits,10);
+		          }
+		          return undefined;
+		        }            
+		        ctrl.$parsers.push(inputValue);
+		      }
+		    };
+		}
+ })();

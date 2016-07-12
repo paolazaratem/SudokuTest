@@ -10,23 +10,31 @@
 </head>
 <body ng-app="Sudoku">
 	<div ng-controller="SudokuController as SudokuCtrl">
+		
 		<header id="header">
 			<h1>Sudoku</h1>
 		</header>
+
 		<div class="content">
 			<div class="board" board-size="9">
-				<h3>{{message}}</h3>
-				<div ng-repeat="row in sudokuBoard track by $index" ng-init="moveRow=$index">
+				<p class="alert-info" ng-if="message">{{message}}</p>
+				<div ng-repeat="row in sudokuBoard track by $index" ng-init="moveRow=$index" 
+				class="{{isHorizontalLine($index)}}">
 					<div ng-repeat="col in row track by $index" class="cell">
-						<div>
-					    	<input type="text" id="cell[{{moveRow}}][{{$index}}]" name="cell[{{moveRow}}][{{$index}}]" ng-model="col" value="{{col}}" 
+					    <input type="text" id="cell[{{moveRow}}][{{$index}}]" name="cell[{{moveRow}}][{{$index}}]" ng-model="col" value="{{col}}" 
 					    	class="input-cell" ng-change="isValidateNumber(moveRow, $index, col)" 
-					    	ng-disabled="{{col>0}}" only-digits>
-					    </div>
+					    	ng-disabled="{{col>0}}" maxlength="1" only-digits>
 					</div>
 				</div>
+				<button ng-click="SudokuCtrl.activate()">New Game</button>
 			</div>
 		</div>
+		<section>
+		</section>
+
+		<footer>
+			"Make by Paola Zarate — Front End Developer" 
+		</footer>
     </div>
 </body>
 <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.6/angular.min.js"></script>

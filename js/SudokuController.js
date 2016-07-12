@@ -23,6 +23,9 @@
 
     vm.createBoardDefault = createBoardDefault;
     vm.editBoard = editBoard;
+    vm.activate = activate;
+
+    $scope.isHorizontalLine = isHorizontalLine;
     
     activate();
 
@@ -34,6 +37,11 @@
       return SudokuService.getBoard()
         .then(function(data) {
           $scope.sudokuBoard = data.data.sudokuBoard;
+        })
+        .catch(function(error) {
+          if(error.status == 404 || error.status == 500){
+            $scope.message = "In this moment, we can't process your request , please try again later";
+          } 
         })
     }
 
@@ -58,28 +66,27 @@
             }
             else if(error.status == 409){
               $scope.message = "Move not allowed, body consist of status, conflict row " + error.data.conflictRow + " and conflict column " + error.data.conflictColumn;
+            }
+            else if(error.status == 404 || error.status == 500){
+               $scope.message = "In this moment, we can't process your request , please try again later";
             } 
           }
         })
     }
 
     function isValidateNumber(row, col, value){
-      if( value > 9 || value < 0 ){
-        if(value.toString().length >= 2){
-          $scope.moveValue = value;
-          $scope.moveRow = row;
-          $scope.moveColumn = col;
-          $scope.moveValue = value;
-          $scope.message = "The value " + value + " is incorrect. The value is between 1 and 9";
-          editBoard();
-        }
-      }else{
-        $scope.messageError = "";
-        $scope.moveRow = row;
-        $scope.moveColumn = col;
-        $scope.moveValue = value;
-        editBoard();
-      }
+      $scope.moveRow = row;
+      $scope.moveColumn = col;
+      $scope.moveValue = value;
+      editBoard();
+      $scope.message="";
     }
+
+    function isHorizontalLine(row){
+     if( (row+1)%3 == 0 )
+       return "black-line";
+     else
+       return "";
+   }
   }
 })();

@@ -1,3 +1,7 @@
+/* SudokuService: data access and model management layer 
+ * relies on Angular injector to provide:
+ *     $http: for use methods get and put
+ */
 (function () {
 	'use strict';
 	
@@ -17,7 +21,7 @@
 		return service;
 
 		function getBoard() {
-            return $http({method: 'GET', url: 'https://afternoon-mountain-94217v2.herokuapp.com/sudoku/'}).
+            return $http({method: 'GET', url: 'https://afternoon-mountain-94217v2.herokuapp.com/sudoku'}).
                 success(function(data, status, headers, config) {
                     return data.sudokuBoard;
                 }).

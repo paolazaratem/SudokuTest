@@ -1,7 +1,7 @@
 body{
 	font-size: 100%;
-    font-family: Verdana,Arial,sans-serif;
-    background: #f4f1e5;
+	font-family: Verdana,Arial,sans-serif;
+	background: #f4f1e5;
 }
 
 header {
@@ -31,12 +31,15 @@ header {
 	height: 2em;
 }
 
+.row{
+	/*border-right: 2px solid #454545;*/
+}
 .cell{
 	display: inline-block;
 	position: relative;
 	border: 1px solid #ddd;
 	background: #fff;
-	max-width: 10%;
+	max-width: 10.4%;
 }
 
 .input-cell[disabled] {
@@ -61,25 +64,36 @@ header {
     margin-right: 1.5em;
 }
 
-.black-line {
+.rb-true {
    border-bottom: 2px solid #454545;
 }
 
-.top-line {
-   border-top: 2px solid #454545;
+.rt-true{
+	border-top: 2px solid #454545;
 }
 
-.board .row .b_true{
-	border-left: 2px solid #454545!important;
+.clb-true{
+    border-left: 2px solid #454545;
 }
 
-.board .row .cell .b_true{
-    border-top: 2px solid red!important;
+.crb-true{
+    border-right: 2px solid #454545;
 }
 
-[board-size="9"].board .cell:nth-of-type(3n){
-	border-right: 2px solid #454545;
+.btn-new{
+    background-color: #00b521;
+    font-weight: 400;
+    text-align: center;
+    color: #FFF;
+    padding: 8px 14px;
+    font-size: 12pt;
+    border-radius: 3px;
+    border: none;
+    margin-top: 1.5em;
 }
+/*[board-size="9"].board .cell:nth-of-type(3n){
+	border-right: 2px solid green;
+}*/
 
 @media (min-width: 50em){
 	.board {
@@ -92,4 +106,10 @@ header {
 		width: 30em;
 		min-height: 28.375rem;
 	}	
+}
+
+@media(max-width:23em) {
+	.cell {
+		letter-spacing:-2px
+	}
 }

@@ -26,7 +26,7 @@
     vm.activate = activate;
 
     $scope.isHorizontalLine = isHorizontalLine;
-    
+    $scope.isVerticalLine = isVerticalLine;
     activate();
 
     function activate() {
@@ -37,6 +37,13 @@
       return SudokuService.getBoard()
         .then(function(data) {
           $scope.sudokuBoard = data.data.sudokuBoard;
+          console.log($scope.sudokuBoard);
+          /*for(var i=0; i<9; i++){
+            for(var j=0; j<9; j++){  
+              if($scope.sudokuBoard[i][j] == 0)
+                $scope.sudokuBoard[i][j] = ' ';   
+            }
+          }*/
         })
         .catch(function(error) {
           if(error.status == 404 || error.status == 500){
@@ -84,11 +91,14 @@
 
     function isHorizontalLine(row){
       if(row == 0)
-        return "top-line";
+        return "rt-border";
       else if( (row+1)%3 == 0 )
-       return "black-line";
+       return "rb-border";
       else
        return "";
+   }
+
+    function isVerticalLine(row){
    }
   }
 })();

@@ -16,7 +16,7 @@
 		      link: function (scope, element, attr, ctrl) {
 		        function inputValue(val) {
 		          if (val) {
-		            var digits = val.replace(/[^0-9]/g, '');
+		            var digits = val.replace(/[^1-9]/g, '');
 		            if (digits !== val) {
 		              ctrl.$setViewValue(digits);
 		              ctrl.$render();

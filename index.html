@@ -19,14 +19,15 @@
 			<div class="board" board-size="9">
 				<p class="alert-info" ng-if="message">{{message}}</p>
 				<div ng-repeat="row in sudokuBoard track by $index" ng-init="moveRow=$index" 
-				class="row {{isHorizontalLine($index)}}">
-					<div ng-repeat="col in row track by $index" class="cell b_{{$index % 3 == 0}}">
-					    <input type="text" id="cell[{{moveRow}}][{{$index}}]" name="cell[{{moveRow}}][{{$index}}]" ng-model="col" value="{{col}}" 
-					    	class="input-cell" ng-change="isValidateNumber(moveRow, $index, col)" 
-					    	ng-disabled="{{col>0}}" maxlength="1" only-digits>
+				class="row rt-{{$index % 3 == 0}} rb-{{$index == 8}}">
+					<div ng-repeat="item in row track by $index" class="cell 
+					clb-{{$index % 3 == 0}} crb-{{$index == 8}}">
+					    <input type="text" id="cell[{{moveRow}}][{{$index}}]" name="cell[{{moveRow}}][{{$index}}]" ng-model="item" value="{{item}}"
+					    	class="input-cell" ng-change="isValidateNumber(moveRow, $index, item)" 
+					    	ng-disabled="{{item>0}}" maxlength="1" only-digits>
 					</div>
 				</div>
-				<button ng-click="SudokuCtrl.activate()">New Game</button>
+				<button class="btn-new" ng-click="SudokuCtrl.activate()">New Game</button>
 			</div>
 		</div>
 		<section>

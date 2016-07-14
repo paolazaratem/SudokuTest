@@ -9,15 +9,17 @@ header {
 	padding: 1em;
 }
 
-.board{
-    width: 400px;
-    min-height: 10rem;
-    max-width: 100%;
-    padding-left: 0;
-    padding-right: 0;
+.content{
+	padding-left: 0;
+	padding-right: 0;
+	width: 400px;
+	max-width: 100%;
 	margin-left: auto;
 	margin-right: auto;
-	margin-top: 1em;
+}
+
+.board{
+    min-height: 21em;
 	margin-bottom: 1.25em;
 }
 
@@ -31,9 +33,6 @@ header {
 	height: 2em;
 }
 
-.row{
-	/*border-right: 2px solid #454545;*/
-}
 .cell{
 	display: inline-block;
 	position: relative;
@@ -76,8 +75,13 @@ header {
     border-left: 2px solid #454545;
 }
 
-.crb-true{
+/*.crb-true{
     border-right: 2px solid #454545;
+}*/
+
+[board-size="9"].board .cell:nth-of-type(3n) {
+	border-right-width:2px;
+	border-right-color:black;
 }
 
 .btn-new{
@@ -91,9 +95,6 @@ header {
     border: none;
     margin-top: 1.5em;
 }
-/*[board-size="9"].board .cell:nth-of-type(3n){
-	border-right: 2px solid green;
-}*/
 
 @media (min-width: 50em){
 	.board {
@@ -102,8 +103,8 @@ header {
 }
 
 @media (min-width: 30em){
-	.board {
-		width: 30em;
+	.content {
+		width: 490px;
 		min-height: 28.375rem;
 	}	
 }

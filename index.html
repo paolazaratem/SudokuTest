@@ -16,8 +16,8 @@
 		</header>
 
 		<div class="content">
+			<p class="alert-info" ng-if="message">{{message}}</p>
 			<div class="board" board-size="9">
-				<p class="alert-info" ng-if="message">{{message}}</p>
 				<div ng-repeat="row in sudokuBoard track by $index" ng-init="moveRow=$index" 
 				class="row rt-{{$index % 3 == 0}} rb-{{$index == 8}}">
 					<div ng-repeat="item in row track by $index" class="cell 
@@ -32,7 +32,6 @@
 		</div>
 		<section>
 		</section>
-
 		<footer>
 			"Make by Paola Zarate — Front End Developer" 
 		</footer>
